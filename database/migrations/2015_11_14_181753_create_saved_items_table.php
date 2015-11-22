@@ -16,7 +16,7 @@ class CreateSavedItemsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->string('type'); // person/event etc.
-            $table->string('facebook_id');
+            $table->string('uri');
             $table->string('status'); // liked/disliked,blocked
             $table->string('body'); // serialized or json encoded content
             $table->timestamps();
