@@ -123,6 +123,7 @@ a:hover {
 .main .application {
     background: whitesmoke;
     padding: 10px;
+    overflow: hidden;
 }
 
 .main .application .searchbox {
