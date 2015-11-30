@@ -1,0 +1,534 @@
+#%RAML 0.8
+title: Social Recommender
+version: 1.0
+baseUri: http://www.social-recommender.ro/
+protocols: [HTTP, HTTPS]
+mediaType: application/json  
+documentation:
+ - title: Home
+   content: |
+     This is the documentation for SocialRecommendet API.
+securitySchemes:
+ - !include https://api.yaas.io/patterns/v1/security-schema-basic.yaml
+/users:
+  description: Users resource.
+  /{userId}:
+    securedBy: [basic_auth]
+    description: Identifies a specific user
+    get:
+      description: Retrieves all data about the authorized user
+    put:
+      description: Updates user info
+      queryParameters:
+        first_name:
+          description: New value of user's first name
+          maxLength: 255
+          required: false
+        last_name:
+          description: New value of user's last name
+          maxLength: 255
+          required: false
+        email:
+          description: New value of user's email
+          maxLength: 255
+          required: false
+        gender:
+          description: Gender
+          maxLength: 255
+          required: false
+        country:
+          description: Country
+          maxLength: 255
+          required: false
+    delete:
+      description: Deletes user's account
+    /connected-accounts:
+      description: Retrieves a list of connected social accounts for the authenticated user.
+      get:
+        description: Returns all user's connected social accounts.         
+/lists:
+  description: A collection of user-defined list of saved items (query results), either liked or disliked. It allows the user to group saved query results by his own criteria
+  securedBy: [basic_auth]
+  get:
+    description: Return all user lists
+    queryParameters:
+      sortBy:
+        type: string
+        description: List sorting criterion
+        enum: ['name','number_of_items','created_at','updated_at']
+        default: created_at
+        required: true
+      sortType:
+        type: string
+        description: Defines the type of sorting for lists
+        enum: ['ascending','descending']
+        default: descending
+        required: true
+      limit: 
+        type: integer
+        description: Maximum number of lists displayed (per page)
+        minimum: 5
+        maximum: 50
+        default: 10
+        required: true
+      offset:
+        type: integer
+        description: Page offset
+        required: true
+  post:
+    description: Creates a new list
+    queryParameters:
+      name:
+        type: string
+        description: List name
+        minLength: 1
+        maxLength: 255
+        required: true
+  /{listId}:
+    description: Defines a specific list
+    securedBy: [basic_auth]
+    get:
+      description: Returns all items from the list
+      queryParameters:
+        sortBy:
+          type: string
+          description: List items sorting criterion
+          enum: ['name','date_added']
+          default: date_added
+          required: true
+        sortType:
+          type: string
+          description: Defines the type of sorting for list items
+          enum: ['ascending','descending']
+          default: descending
+          required: true
+    post:
+      description: Adds an itemt to a list
+      queryParameters:
+        itemType: 
+          type: string
+          description: The type of item
+          enum: ['person', 'event', 'book', 'movie', 'place', 'educational_institute']
+          required: true
+        body:
+          type: string
+          description: Item in RDF format
+          required: true
+    put:
+      description: Updates a list
+      queryParameters:
+        name:
+          type: string
+          description: New list name
+          required: false
+    delete:
+      description: Removes a list
+/saved-items:
+  description: A collection of saved query results
+  securedBy: [basic_auth]
+  get:
+    description: Returns all saved items (liked or disliked)
+    queryParameters:
+      item_type:
+        type: string
+        description: Filter by item type
+        enum: ['person', 'event', 'book', 'movie', 'place', 'educational_institute']
+        required: false
+      item_status:
+        type: string
+        description: Filter by item status
+        enum: ['liked','disliked']
+        required: false
+      sortBy:
+        type: string
+        description: Items sorting criterion
+        enum: ['date_added', 'item_type', 'item_status']
+        default: date_added
+        required: true
+      sortType:
+        type: string
+        description: Sorting type for saved items
+        enum: ['ascending','descending']
+        default: descending
+        required: true
+      since:
+        type: string
+        description: Defines a period of time
+        enum: ['last_week','last_month','last_three_months', 'last_six_months','last_year', 'lifetime']
+        default: lifetime
+        required: true
+      limit: 
+        type: integer
+        description: Maximum number of items displayed (per page)
+        minimum: 5
+        maximum: 50
+        default: 10
+        required: true
+      offset:
+        type: integer
+        description: Page offset
+        required: true
+      format:
+        type: string
+        enum: ['application/json','RDF']
+        default: 'application/json'
+  post:
+    description: Store a new item (from query result)
+    queryParameters:
+      item_type:
+        type: string
+        description: Item type
+        enum: ['person', 'event', 'book', 'movie', 'place', 'educational_institute']
+        required: true
+      item_status:
+        type: string
+        description: Item status
+        enum: ['liked', 'disliked']
+        required: true
+      item_body: 
+        type: string
+        description: Item in RDF format
+        required: true
+      uri:
+        type: string
+        description: Item URI
+        required: true        
+  /{itemId}:
+    description: Identifies a saved item
+    get:
+      description: Retrieves all data from a saved item
+    put:
+      description: Updates a saved item (status)
+      queryParameters:
+        item_status:
+          type: string
+          description: Change an item status (from liked to blocked or otherwise)
+          enum: ['liked', 'disliked']
+          required: false
+    delete: 
+      description: Delete a saved item
+/search:
+  description: Search module. The user can query the semantic web by simply filling a form.
+  securedBy: [basic_auth]
+  /people:
+    description: Search for people
+    securedBy: [basic_auth]
+    get:
+      description: Search for people by querying multiple open data graphs 
+      queryParameters:
+        name:
+          type: string
+          required: false
+        address:
+          type: string
+          required: false
+        birthDate:
+          type: date
+          required: false
+        birthPlace:
+          type: string
+          required: false
+        email:
+          type: string
+          required: false
+        familyName:
+          type: string
+          required: false
+        gender:
+          type: string
+          required: false
+        givenName:
+          type: string
+          required: false
+        homeLocation:
+          type: string
+          required: false
+        jobTitle:
+          type: string
+          required: false
+        nationality:
+          type: string
+          required: false
+        telephone:
+          type: string
+          required: false
+        workLocation:
+          type: string
+          required: false
+        worksFor:
+          type: string
+          required: false
+        limit:
+          type: integer
+          description: Maximum number of items displayed (per page)
+          minimum: 5
+          maximum: 50
+          default: 10
+          required: true
+        offset:
+          type: integer
+          description: Page offset
+          required: true
+        format:
+          type: string
+          enum: ['application/json','RDF']
+          default: 'application/json'
+  /events:
+    description: Search for events
+    securedBy: [basic_auth]
+    get:
+      description: Search for events by querying multiple open data graphs 
+      queryParameters:
+        name:
+          type: string
+          required: false
+        ageRange:
+          type: string
+          required: false
+        endDate:
+          type: date
+          required: false
+        location:
+          type: string
+          required: false
+        performer:
+          type: string
+          required: false
+        startDate:
+          type: date
+          required: false
+        type:
+          type: string
+          required: false
+        limit:
+          type: integer
+          description: Maximum number of items displayed (per page)
+          minimum: 5
+          maximum: 50
+          default: 10
+          required: true
+        offset:
+          type: integer
+          description: Page offset
+          required: true
+        format:
+          type: string
+          enum: ['application/json','RDF']
+          default: 'application/json'
+  /books:
+    description: Search for books
+    securedBy: [basic_auth]
+    get:
+      description: Search for books by querying multiple open data graphs
+      queryParameters:
+        author:
+          type: string
+          required: false
+        firstPublicationDate:
+          type: date
+          required: false
+        literaryGenre:
+          type: string
+          required: false
+        numberOfPages:
+          type: integer
+          required: false
+        numberOfVolumes:
+          type: integer
+          required: false
+        originalTitle:
+          type: string
+          required: false
+        illustrator:
+          type: string
+          required: false
+        limit:
+          type: integer
+          description: Maximum number of items displayed (per page)
+          minimum: 5
+          maximum: 50
+          default: 10
+          required: true
+        offset:
+          type: integer
+          description: Page offset
+          required: true
+        format:
+          type: string
+          enum: ['application/json','RDF']
+          default: 'application/json'
+  /movies:
+    description: Search for movies
+    securedBy: [basic_auth]
+    get:
+      description: Search for movies by querying multiple open data graphs
+      queryParameters:
+        name:
+          type: string
+          required: false
+        actor:
+          type: string
+          required: false
+        countryOfOrigin:
+          type: string
+          required: false
+        director:
+          type: string
+          required: false
+        musicBy:
+          type: string
+          required: false
+        character:
+          type: string
+          required: false
+        dateCreated:
+          type: date
+          required: false
+        genre:
+          type: string
+          required: false
+        limit:
+          type: integer
+          description: Maximum number of items displayed (per page)
+          minimum: 5
+          maximum: 50
+          default: 10
+          required: true
+        offset:
+          type: integer
+          description: Page offset
+          required: true    
+        format:
+          type: string
+          enum: ['application/json','RDF']
+          default: 'application/json'
+  /places:
+    description: Search for places
+    securedBy: [basic_auth]
+    get:
+      description: Search for places by querying multiple open data graphs
+      queryParameters:
+        alternativeName:
+          type: string
+          required: false
+        commonName:
+          type: string
+          required: false
+        address:
+          type: string
+          required: false
+        location:
+          type: string
+          required: false
+        locationCountry:
+          type: string
+          required: false
+        type:
+          type: string
+          required: false
+        limit:
+          type: integer
+          description: Maximum number of items displayed (per page)
+          minimum: 5
+          maximum: 50
+          default: 10
+          required: true
+        offset:
+          type: integer
+          description: Page offset
+          required: true
+        format:
+          type: string
+          enum: ['application/json','RDF']
+          default: 'application/json'
+  /educational_institutes:
+    description: Search for educational institutes (schools, universities)
+    securedBy: [basic_auth]
+    get:
+      description: Search for educational institutes by querying multiple open data graphs
+      queryParameters: 
+        name: 
+          type: string
+          required: false  
+        classes:
+          type: integer
+          required: false
+        campusSize:
+          type: integer
+          required: false
+        campusType:
+          type: integer
+          required: false
+        nobelLaureates:
+          type: integer
+          required: false
+        numberOfAcademicStaff:
+          type: integer
+          required: false
+        numberOfLocations:
+          type: integer
+          required: false
+        numberOfStudents:
+          type: integer
+          required: false
+        offeredClasses:
+          type: integer
+          required: false
+        ranking:
+          type: integer
+          required: false
+        limit:
+          type: integer
+          description: Maximum number of items displayed (per page)
+          minimum: 5
+          maximum: 50
+          default: 10
+          required: true
+        offset:
+          type: integer
+          description: Page offset
+          required: true          
+        format:
+          type: string
+          enum: ['application/json','RDF']
+          default: 'application/json'
+/recommendations:
+  description: Refers a set of recommendations of all types, randomly generated from the user's FOAF graph.
+  securedBy: [basic_auth]
+  get:
+    description: Retrieves all random recommendations.
+    queryParameters:
+      item_type:
+        type: string
+        description: The type of recommended item
+        enum: ['person', 'event', 'book', 'movie', 'place', 'educational_institute']
+        required: true      
+      format:
+        type: string
+        enum: ['application/json','RDF']
+        default: 'application/json'
+/graph:
+  description: All content from user's graph Also defines similarities between people in graph
+  securedBy: [basic_auth]
+  get:
+    queryParameters:
+      item_type:
+        type: string
+        description: The type of recommended item
+        enum: ['person', 'event', 'book', 'movie', 'place', 'educational_institute']
+        required: false
+      limit: 
+        type: integer
+        description: Maximum number of items displayed (per page)
+        minimum: 5
+        maximum: 50
+        default: 10
+        required: true
+      offset:
+        type: integer
+        description: Page offset
+        required: true      
+      format:
+        type: string
+        enum: ['application/json','RDF']
+        default: 'application/json'
