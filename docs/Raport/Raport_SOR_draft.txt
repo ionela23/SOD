@@ -1,0 +1,129 @@
+Social recommender
+
+Introduction
+Develop an application able to recommend certain people/events/things of interest according to 
+a given FOAF graph built for a specific user – based on its social media profile(s) – by considering multiple similar features/properties.
+ For example, suggesting the members of an IT team based on desired skills (excellent knowledge of Web technologies + software engineering + open hardware), 
+ geolocation (i.e. from Romania and UK only), preferences, hobbies (i.e. horror movies + classical music), aversions (e.g., communication by phone, football,
+ politics) and so on. The system should be smart enough to improve the recommendations based on various methods such as user feedback, reasoning, and/or machine
+ learning. The recommended items will be available via a SPARQL endpoint. Various existing ontologies could be used: Human Resources Management Ontology or 
+ ResumeRDF.
+ 
+ Social recommender is an application that is able to recommend certain people/events/things of interest according to 
+ a given FOAF graph build with information from a social network( for now Facebook, but later on it has the possibility 
+ to be extended with more information from other social networks like Linked in, Twitter, etc...) about the client's features, 
+ interests, likes/dislikes, events/things, heard/liked music, artists, profession, knowledge, places he/she visited, played games,
+ persons he/she knows and interacts more.
+ 
+ Know the application from client point of view: 
+ - the application is a social recommender that, as the name implies, it recommends the client certain places to visit, people he/she may know/like,  events( like concerts, sports events, sculpture displays, botanical gardens display, furniture auctions, antique shows, museum opening and much more) according to information from social networks( main social network, for starters,  Facebook).
+
+ Based on the given graph, results can be taken from external resources as well:
+ -Dbpedia
+ - to be discussed
+ 
+ FOAF graph is created and loaded in the server after the client first registers in the application(need to be discussed).
+ The graph can be updated if the client requests so, otherwise it is updated every time the client signs in( or every one week, one month... to be discussed).
+ The registration requires information about the client so that when the client performs the first log in, some preferences are already displayed on the start page.
+  
+   
+ 
+ Know the application from client point of view: 
+ - the application is a social recommender that, as the name implies, it recommends the client certain places to visit, people he/she may know/like, 
+ events( like concerts, sports events, sculpture displays, botanical gardens display, furniture auctions, antique shows, museum opening and much more) according to 
+information from social networks( main social network, for starters, is Facebook).
+ 
+ 
+ 1. Start to know SOR. 
+ 2. Objectives
+ 2. Register
+ 3. Log in
+ 4. Homepage
+ 8. Possible Resources:
+  Resources are used to get accurate recommendations for the user.
+  The following resources are examples of resources that could be used for this application: 
+	- dbpedia http://wiki.dbpedia.org/
+	- GeoNames.org - The GeoNames geographical database covers all countries and contains over eight million placenames that are available for download free of charge.
+		http://www.geonames.org/
+	- Linked Data: "Linked Data is about using the Web to connect related data that wasn't previously linked, or using the Web to lower the barriers to linking data currently linked using other methods. More specifically, Wikipedia defines Linked Data as "a term used to describe a recommended best practice for exposing, sharing, and connecting pieces of data, information, and knowledge on the Semantic Web using URIs and RDF.""
+     	http://linkeddata.org/
+	- Schema.org 
+		'Schema.org is a collaborative, community activity with a mission to create, maintain, and promote schemas for structured data on the Internet, on web pages, in email messages, and beyond.'
+	- Freebase - 'Freebase was a large collaborative knowledge base consisting of data composed mainly by its community members.'
+		https://www.freebase.com/
+	- BabelNet 'is a multilingual lexicalized semantic network and ontology'
+		http://babelnet.org/
+	- Wikidata 'is a collaboratively edited knowledge base'.
+		https://www.wikidata.org/wiki/Wikidata:Main_Page
+	- and so on...
+	
+	Note: This list of resources is not final.
+ 5. Social networks : Facebook
+ 6. FOAF graph
+	FOAF graph( friend of a friend) is a RDF file that stores personal information taken from a social network( Facebook). 
+	Personal information means information from Facebook profile, includins client's friends like,, likes/dislikes, events, things, 
+	professions, music, artists, work places, domains of work, stores, electronics, clothes and so on...
+	
+ 6.1 Creation of FOAF graph
+	FOAF graph is created first when the client logs in on a social network in a RDF format. The client has the possibility to update the content of 
+	the graph every time he/she requests so. 
+	Even if the client does not request an update of the graph, the application will be programmed to update the graph every 2 days. 
+ 6.2 Storage of FOAF graph
+ 6.3 Usage of FOAF graph
+	- random generated recomandations based on RDF graph - there recomandations are displayed when the client first uses the application( at login) and on request.
+ 7.API specifications - RAML file
+	7.1 Modules
+	-  /search/people, /search/events etc - used for searches after information from the homepage form, filled in by the user. 
+	   5 different forms are needed for this.
+    - /recommendations?item_type=person etc...- used for random recommendation based on similarities from graph( without querys) which will apear on the wall. A drop-down with 5 recommendations will be available,
+ serving as a filter that the client can chose the type of recomandation to see.
+	- graph?item_type=person etc - display of all resources from the RDF graph, filtered by categories.
+	
+	- the RAML file also contains sorting criterias ( by name, date, ...), types of sorting( ascending, descendign).
+	- /saved-items?item_type=person... - this path gets preferences saved( likes/dislikes)
+	7.2 RAML file - link to RAML file in report
+ 5. Caching - save querys from user actions
+ 6. User preferences
+	Save user preferences in his/her profile. User preferences may include likes and dislikes.
+ 7. Results - limited display of results
+	 Results are displayed in Homepage, containing: 
+		- name of the results
+		- description
+		- others, according to the selected criterias, or according to the recommendations( random or requested).
+     Maximum number of items displayed (per page)
+          minimum: 5
+          maximum: 50
+          default: 10 
+ 7.1 Display results
+ 7.2 Save preferences( limited number of preferences) - this includes likes and dislikes
+	Beside a list of preferences that the client likes, SOR also creates a black list of results that should not be included in the displayed results. 
+	In this way SOR becomes more accurate each time it is used.
+ 7.3
+ 8 Resources:
+  The following resources are examples of resources that could be used for this application. This is not final.
+	- dbpedia: 'DBpedia is a crowd-sourced community effort to extract structured information from Wikipedia and make this information available on the Web'.
+    	http://wiki.dbpedia.org/
+	- GeoNames.org - The GeoNames geographical database covers all countries and contains over eight million placenames that are available for download free of charge.
+		http://www.geonames.org/
+	- Linked Data: "Linked Data is about using the Web to connect related data that wasn't previously linked, or using the Web to lower the barriers to linking data currently linked using other methods. More specifically, Wikipedia defines Linked Data as "a term used to describe a recommended best practice for exposing, sharing, and connecting pieces of data, information, and knowledge on the Semantic Web using URIs and RDF.""
+     	http://linkeddata.org/
+	- Schema.org 
+		'Schema.org is a collaborative, community activity with a mission to create, maintain, and promote schemas for structured data on the Internet, on web pages, in email messages, and beyond.'
+	- Freebase - 'Freebase was a large collaborative knowledge base consisting of data composed mainly by its community members.'
+		https://www.freebase.com/
+	- BabelNet 'is a multilingual lexicalized semantic network and ontology'
+		http://babelnet.org/
+	- Wikidata 'is a collaboratively edited knowledge base'.
+		https://www.wikidata.org/wiki/Wikidata:Main_Page
+	
+	
+		Bibliography
+  
+DBpedia: http://wiki.dbpedia.org/
+FOAF: http://www.foaf-project.org/
+RAML: http://raml.org/
+Facebook: https://www.facebook.com/
+Security schemas: https://api.yaas.io/patterns/v1/security-schema-basic.yaml
+Schema.org: https://schema.org/
+Wikipedia: https://wikipedia.com/
+Web project page: http://profs.info.uaic.ro/~busaco/teach/courses/wade/web-projects.html
