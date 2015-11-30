@@ -216,12 +216,6 @@ securitySchemes:
     get:
       description: Search for people by querying multiple open data graphs 
       queryParameters:
-        name:
-          type: string
-          required: false
-        address:
-          type: string
-          required: false
         birthDate:
           type: date
           required: false
@@ -321,6 +315,9 @@ securitySchemes:
     get:
       description: Search for books by querying multiple open data graphs
       queryParameters:
+        name:
+          type: string
+          required: false
         author:
           type: string
           required: false
@@ -335,9 +332,6 @@ securitySchemes:
           required: false
         numberOfVolumes:
           type: integer
-          required: false
-        originalTitle:
-          type: string
           required: false
         illustrator:
           type: string
@@ -370,6 +364,9 @@ securitySchemes:
           type: string
           required: false
         countryOfOrigin:
+          type: string
+          required: false
+        inLanguage:
           type: string
           required: false
         director:
@@ -408,10 +405,7 @@ securitySchemes:
     get:
       description: Search for places by querying multiple open data graphs
       queryParameters:
-        alternativeName:
-          type: string
-          required: false
-        commonName:
+        name:
           type: string
           required: false
         address:
@@ -454,9 +448,6 @@ securitySchemes:
           type: integer
           required: false
         campusSize:
-          type: integer
-          required: false
-        campusType:
           type: integer
           required: false
         nobelLaureates:
@@ -527,7 +518,8 @@ securitySchemes:
       offset:
         type: integer
         description: Page offset
-        required: true      
+        required: true
+      
       format:
         type: string
         enum: ['application/json','RDF']
