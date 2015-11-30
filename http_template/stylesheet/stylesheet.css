@@ -291,7 +291,7 @@ a:hover {
     padding-top: 15px;
 }
 
-.specification-side form .form-control {
+form .form-control {
     height: 40px;
     font-size: 22px;
     font-family: "Raleway",sans-serif;
@@ -299,7 +299,7 @@ a:hover {
     padding-left: 20px;
 }
 
-.specification-side form button[type="submit"] {
+form button[type="submit"] {
     font-family: "Raleway",sans-serif;
     font-weight: 500;
     font-size: 22px;
@@ -332,4 +332,42 @@ a:hover {
       display: -ms-flexbox;
       display:         flex;
     }
+}
+
+.profile-form {
+    padding: 0 30px;
+}
+
+.profile-form h2 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    font-size: 30px;
+}
+
+.from-group {
+    margin-bottom: 20px;
+}
+
+label {
+    margin-bottom: 0px;
+}
+
+input[type="radio"] {
+    width: 20px;
+    height: 20px;
+    bottom: 0;
+}
+
+.radio label {
+    margin-right: 15px;
+}
+
+.display-inline-block {
+    display: inline-block;
+}
+
+.radiofix {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 18px;
 }
