@@ -391,3 +391,12 @@ input[type="radio"] {
     margin-bottom: 10px;
     margin-left: 18px;
 }
+
+.app-report {
+    padding: 0 20px;
+    font-family: 'Raleway', sans-serif;
+}
+
+.app-report ul:first-of-type li {
+    list-style: none;
+}
