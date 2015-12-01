@@ -47,34 +47,164 @@
                     </ul>
                 </div>
                 <div class="col-md-9 application">
-                    <div class="searchbox">
-                        <input type="text" placeholder="search.." class="form-control searchinput">
-                        <div class="searchoptions">
-                            <button type="button" class="searcher"><span class="glyphicon glyphicon-search"></span></button>
-                            <button type="button" class="extra"><span class="glyphicon glyphicon-arrow-down"></span></button>
-                            <div class="dropdown-extraoptions">
-                                <div class="radio">
-                                    I am looking for 
-                                    <label>
-                                        <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" checked> anything
-                                    </label>
-                                    <label>
-                                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1"> a person
-                                    </label>
+                    
 
-                                    <label>
-                                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> an event
-                                    </label>
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#Person" aria-controls="home" role="tab" data-toggle="tab">Person</a></li>
+                    <li role="presentation"><a href="#Event" aria-controls="profile" role="tab" data-toggle="tab">Event</a></li>
+                    <li role="presentation"><a href="#Book" aria-controls="messages" role="tab" data-toggle="tab">Book</a></li>
+                    <li role="presentation"><a href="#Place" aria-controls="settings" role="tab" data-toggle="tab">Place</a></li>
+                    <li role="presentation"><a href="#Institute" aria-controls="settings" role="tab" data-toggle="tab">Institute</a></li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="Person">
+                            <form role="form" class="search-form">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="lastName">Last Name</label>
+                                            <input class="form-control" type="text" name="lastName" id="lastName">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="firstName">First Name</label>
+                                            <input class="form-control" type="text" name="firstName" id="firstName">
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input value="" type="checkbox">Refetch data from connected accounts <span class="yellow strong">(this will increase loading time..)</span>
-                                    </label>
-                                </div>
-                            </div>
+                            </form>
                         </div>
-                        
-                        
+                        <div role="tabpanel" class="tab-pane" id="Event">
+                            2
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="Book">
+                            3    
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="Place">
+                            4    
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="Institute">
+                            <form role="form" class="search-form">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="givenInstituteName">Institute Name</label>
+                                            <input class="form-control" type="text" name="givenInstituteName" id="givenInstituteName">
+                                        </div>
+                                    </div> 
+                                    <div class="col-md-3 col-sm-3 col-xs-6">
+                                        <div class="form-group">
+                                            <label>Number of Classes</label>
+                                            <input class="form-control" type="text" placeholder="from.." name="lastName" id="minimumInstituteClasses">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-6">
+                                        <div class="form-group">
+                                            <label></label>
+                                            <input class="form-control" type="text" placeholder="to.." name="maximumInstituteClasses" id="minimumInstituteClasses">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-6">
+                                        <div class="form-group">
+                                            <label> Campus Size</label>
+                                            <input class="form-control" type="text" placeholder="from.." name="minimumCampusSize" id="minimumCampusSize">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-6">
+                                        <div class="form-group">
+                                            <label></label>
+                                            <input class="form-control" type="text" placeholder="to.." name="maximumCampusSize" id="maximumCampusSize">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-6">
+                                        <div class="form-group">
+                                            <label>Nobel Laureates</label>
+                                            <input class="form-control" type="text" placeholder="from.." name="minimumCampusLaureates" id="minimumCampusLaureates">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-6">
+                                        <div class="form-group">
+                                            <label></label>
+                                            <input class="form-control" type="text" placeholder="to.." name="maximumCampusLaureates" id="maximumCampusLaureates">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-6">
+                                        <div class="form-group">
+                                            <label>Academic Staff</label>
+                                            <input class="form-control" type="text" placeholder="from.." name="minimumAcademicStaff" id="minimumCampusLaureates">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-6">
+                                        <div class="form-group">
+                                            <label></label>
+                                            <input class="form-control" type="text" placeholder="to.." name="maximumAcademicStaff" id="maximumCampusLaureates">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-6">
+                                        <div class="form-group">
+                                            <label>Locations</label>
+                                            <input class="form-control" type="text" placeholder="from.." name="minimumLocations" id="minimumCampusLaureates">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-6">
+                                        <div class="form-group">
+                                            <label></label>
+                                            <input class="form-control" type="text" placeholder="to.." name="maximumLocations" id="maximumCampusLaureates">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-6">
+                                        <div class="form-group">
+                                            <label>Students</label>
+                                            <input class="form-control" type="text" placeholder="from.." name="minimumStudents" id="minimumCampusLaureates">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-6">
+                                        <div class="form-group">
+                                            <label></label>
+                                            <input class="form-control" type="text" placeholder="to.." name="maximumStudents" id="maximumCampusLaureates">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <div class="form-group">
+                                            <label>Offered Classes</label>
+                                            <input class="form-control" type="text" placeholder="separate by coma.." name="offeredClasses" id="maximumCampusLaureates">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-6">
+                                        <div class="form-group">
+                                            <label>Ranking</label>
+                                            <select class="form-control">
+                                                <option value="">from..</option>
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                            </select> 
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-6">
+                                        <div class="form-group">
+                                            <label></label>
+                                            <select class="form-control">
+                                                <option value="">to..</option>
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-sm-12 col-xs-12 text-right">
+                                        <button type="submit" class="btn" name="Search" value="search">Search</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                     <hr>
                     <div class="results">
