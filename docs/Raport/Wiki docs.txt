@@ -1,5 +1,44 @@
-Social Recommender is an application that has been set to recommend certain people, events, books, music, institutes based on a social network that the user has to connect to.
+Social Recommender is an application that has been set to recommend certain people, events, books, music, institutes based on a social network that the user has to connect to. The social network used is Facebook.
 What is great in this app is that the user can receive random recommendations even thought he registered for the first time. 
 The recommendations are based on information acquired from Facebook profile, and includes the information from user's friends, and friends of friends. 
 The results will be displayed as a list of potential interests. 
 Users have the possibility to create his own favourite list of results,list that will be saved in user's profile. Apart from this applicability, as an improvement of the random and on request recommendations, the user can also select the most unliked results. In this way, the results are based on more search criterias that lead to a more acurate understanding of users interests.
+Results are displayed in Homepage, containing:
+
+name of the results
+description
+others, according to the selected criteria or according to the recommendations(random or requested).
+The constraints of the number of items displayed are:
+
+minimum number of results: 5
+maximum number of results: 50
+default: 10
+
+Resources that will be used to get better results are:
+Dbpedia is a crowd-sourced community effort to extract structured information from Wikipedia and make this information available on the Web.
+Geonames.org - the geographical database covers all countries and contains over eight million place names that are available for download free of charge.
+Linked Data is about using the Web to connect related data that wasn't previously linked, or using the Web to lower the barriers to linking data currently linked using other methods. More specifically, Wikipedia defines Linked Data as "a term used to describe a recommended best practice for exposing, sharing, and connecting pieces of data, information, and knowledge on the Semantic Web using URIs and RDF.
+Schema.org is a collaborative, community activity with a mission to create, maintain, and promote schemas for structured data on the Internet, on web pages, in email messages, and beyond.
+Freebase was a large collaborative knowledge base consisting of data composed mainly by its community members.
+BabelNet is a multilingual lexicalized semantic network and ontology.
+Wikidata is a collaboratively edited knowledge base.
+Note: This list of data sources is not final and the definitions of the resources are taken from the main sites.
+
+Bibliography
+DBpedia: http://wiki.dbpedia.org/
+
+FOAF: http://www.foaf-project.org/
+
+RAML: http://raml.org/
+
+Facebook: https://www.facebook.com/
+
+Security schemas: https://api.yaas.io/patterns/v1/security-schema-basic.yaml
+
+Schema.org: https://schema.org/
+
+Wikipedia: https://wikipedia.com/
+
+Blog: https://socialrecommender.wordpress.com/about/
+
+Web project page: http://profs.info.uaic.ro/~busaco/teach/courses/wade/web-projects.html
