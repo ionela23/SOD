@@ -3,13 +3,13 @@ What is great in this app is that the user can receive random recommendations ev
 The recommendations are based on information acquired from Facebook profile, and includes the information from user's friends, and friends of friends. 
 The results will be displayed as a list of potential interests. 
 Users have the possibility to create his own favourite list of results,list that will be saved in user's profile. Apart from this applicability, as an improvement of the random and on request recommendations, the user can also select the most unliked results. In this way, the results are based on more search criterias that lead to a more acurate understanding of users interests.
-Results are displayed in Homepage, containing:
 
+Results are displayed in Homepage, containing:
 name of the results
 description
 others, according to the selected criteria or according to the recommendations(random or requested).
-The constraints of the number of items displayed are:
 
+The constraints of the number of items displayed are:
 minimum number of results: 5
 maximum number of results: 50
 default: 10
