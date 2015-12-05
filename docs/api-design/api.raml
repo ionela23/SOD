@@ -103,7 +103,7 @@ securitySchemes:
           default: descending
           required: true
     post:
-      description: Adds an item to a list
+      description: Adds an itemt to a list
       queryParameters:
         itemType: 
           type: string
@@ -498,6 +498,22 @@ securitySchemes:
         type: string
         enum: ['application/json','RDF']
         default: 'application/json'
+    responses:
+         200:
+           body:
+             application/json:
+              example: |
+                 {
+                   "data": {
+                     "name": "Diana",
+                     "description": "Likes tennis and IT",
+                     "birthdate": "24/10/1992",
+                     "common_friends" : 23,
+                     "link": "https://www.facebook.com/diana.minzat.5?fref=ts",
+                   },
+                   "success": true,
+                   "status": 200
+                 }
 /graph:
   description: All content from user's graph Also defines similarities between people in graph
   securedBy: [basic_auth]
@@ -506,7 +522,7 @@ securitySchemes:
       item_type:
         type: string
         description: The type of recommended item
-        enum: ['person', 'event', 'book', 'movie', 'place', 'educational_institute']
+        enum: ['person', 'event', 'book', 'movie', 'place', 'school']
         required: false
       limit: 
         type: integer
