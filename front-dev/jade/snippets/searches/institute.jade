@@ -1,0 +1,87 @@
+.panel.panel-default
+    .panel-heading
+        h4.panel-title
+            a(data-toggle="collapse", data-parent="#accordion", href="#searchInstitute") Search Institutes
+    .panel-collapse.collapse.in#searchInstitute
+        .panel-body
+            form.search-form(role="form")
+                .row
+                    .col-md-12
+                        label Institute Name
+                        .form-group
+                            input.form-control#givenInstituteName(type="text", name="givenInstituteName")
+                    .col-md-12
+                        label Number of Classes
+                    .col-md-6.col-sm-6.col-xs-6
+                        .form-group
+                            input.form-control#minimumInstituteClasses(type="text", placeholder="from..", name="minimumInstituteClasses")
+                    .col-md-6.col-sm-6.col-xs-6
+                        .form-group
+                            input.form-control#maximumInstituteClasses(type="text", placeholder="to..", name="maximumInstituteClasses")
+                    .col-md-12
+                        label Campus Size
+                    .col-md-6.col-sm-6.col-xs-6
+                        .form-group
+                            input.form-control#minimumCampusSize(type="text", placeholder="from..", name="minimumCampusSize")
+                    .col-md-6.col-sm-6.col-xs-6
+                        .form-group
+                            input.form-control#maximumCampusSize(type="text", placeholder="to..", name="maximumCampusSize")
+                    .col-md-12
+                        label Nobel Laureates
+                    .col-md-6.col-sm-6.col-xs-6
+                        .form-group
+                            input.form-control#minimumCampusLaureates(type="text", placeholder="from..", name="minimumCampusLaureates")
+                    .col-md-6.col-sm-6.col-xs-6
+                        .form-group
+                            input.form-control#maximumCampusLaureates(type="text", placeholder="to..", name="maximumCampusLaureates")
+                    .col-md-12
+                        label Academic Staff
+                    .col-md-6.col-sm-6.col-xs-6
+                        .form-group
+                            input.form-control#minimumAcademicStaff(type="text", placeholder="from..", name="minimumAcademicStaff")
+                    .col-md-6.col-sm-6.col-xs-6
+                        .form-group
+                            input.form-control#maximumAcademicStaff(type="text", placeholder="to..", name="maximumAcademicStaff")
+                    .col-md-12
+                        label Locations
+                    .col-md-6.col-sm-6.col-xs-6
+                        .form-group
+                            input.form-control#minimumLocations(type="text", placeholder="from..", name="minimumLocations")
+                    .col-md-6.col-sm-6.col-xs-6
+                        .form-group
+                            input.form-control#maximumLocations(type="text", placeholder="to..", name="maximumLocations")
+                    .col-md-12
+                        label Students
+                    .col-md-6.col-sm-6.col-xs-6
+                        .form-group
+                            input.form-control#minimumStudents(type="text", placeholder="from..", name="minimumStudents")
+                    .col-md-6.col-sm-6.col-xs-6
+                        .form-group
+                            input.form-control#maximumStudents(type="text", placeholder="to..", name="maximumStudents")
+                    .col-md-12
+                        label Offered Classes
+                    .col-md-12.col-sm-12.col-xs-12
+                        .form-group
+                            input.form-control#offeredClasses(type="text", placeholder="separate by coma..", name="offeredClasses")
+                    .col-md-12
+                        label Ranking
+                    .col-md-6.col-sm-6.col-xs-6
+                        .form-group
+                            select.form-control
+                                option(value="") from..
+                                option 1
+                                option 2
+                                option 3
+                                option 4
+                                option 5
+                    .col-md-6.col-sm-6.col-xs-6
+                        .form-group
+                            select.form-control
+                                option(value="") to..
+                                option 1
+                                option 2
+                                option 3
+                                option 4
+                                option 5
+                    .col-md-12.col-sm-12.col-xs-12.text-right
+                        button.btn(type="submit", name="Search", value="Search") Search

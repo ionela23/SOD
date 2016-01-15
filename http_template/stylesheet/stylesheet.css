@@ -5,8 +5,8 @@ body {
 
 .top-side {
     background: #E9E9E9;
-    padding-top: 0;
-    padding-bottom: 30px;
+    padding-top: 30px;
+    padding-bottom: 0;
     position: relative;
 }
 
