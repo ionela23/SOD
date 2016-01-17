@@ -3,6 +3,10 @@ body {
     min-width: 340px;
 }
 
+.main {
+    margin-top: 30px;
+}
+
 .top-side {
     background: #E9E9E9;
     padding-top: 30px;
@@ -32,6 +36,7 @@ body {
 
 .top-side ul li {
     display: inline-block;
+    margin-left: 4px;
 }
 
 .top-side .callAction li {
@@ -43,23 +48,16 @@ a:hover {
     text-decoration: none;
 }
 
-.callAction li a, .menu li a {
+.menu li a {
     font-family: "Raleway",sans-serif;
     font-weight: 500;
     color: whitesmoke;
     background: #3299BB;
 }
 
-.top-side .callAction li a {
-    padding: 7px 10px;
-    font-size: 22px;
-    border-radius: 4px;
-}
-
 .top-side .menu {
-    position: absolute;
-    bottom: 0;
-    right: 25px;
+    float: right;
+    margin-right: 15px;
     margin-bottom: 0;
 }
 
@@ -283,8 +281,8 @@ a:hover {
 
 .specification-side {
     background: white;
-    padding-top: 30px;
-    padding-bottom: 30px;
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
 .specification-side h2{
@@ -322,7 +320,7 @@ form .form-control {
 form button[type="submit"] {
     font-family: "Raleway",sans-serif;
     font-weight: 500;
-    font-size: 22px;
+    font-size: 18px;
     color: whitesmoke;
     padding: 7px 10px;
     background: #3299BB;
@@ -330,12 +328,12 @@ form button[type="submit"] {
     border: none;
 }
 
-.prefooter-side {
+.footer-side {
     background: #E9E9E9;
     padding: 30px;
 }
 
-.prefooter-side p {
+.footer-side p {
     font-family: 'Raleway', sans-serif;
     font-weight: 300;
     font-size: 28px;
