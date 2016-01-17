@@ -1,0 +1,12 @@
+/vendor
+/node_modules
+Homestead.yaml
+Homestead.json
+.env
+
+.env.example
+.idea/*
+storage/*
+.gitattributes
+artisan
+readme (2).md
