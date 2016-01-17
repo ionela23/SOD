@@ -14,4 +14,6 @@ return [
     ],
 
     'permissions' => ' public_profile, user_friends',
+
+    'graph_user_parameters' => 'id,name,link',
 ];

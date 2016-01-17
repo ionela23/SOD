@@ -36,4 +36,13 @@ class User extends Model implements AuthenticatableContract,
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
+    public function facebookAccounts()
+    {
+        return $this->hasMany('App\FacebookAccount');
+    }
+    public function googleAccounts()
+    {
+        return $this->hasMany('App\GoogleAccount');
+    }
 }

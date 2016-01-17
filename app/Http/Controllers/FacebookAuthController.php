@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\FacebookAccount;
 use Facebook\Facebook;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
@@ -39,13 +41,14 @@ class FacebookAuthController extends Controller
         } catch(\Exception $e) {
             return null;
         }
-
         $oAuth2Client = $fb->getOAuth2Client();
         $longLivedAccessToken = $oAuth2Client->getLongLivedAccessToken($accessToken);
         $fb->setDefaultAccessToken($longLivedAccessToken);
 
         return $fb;
     }
+
+
 
     public function authenticate(Request $request){
         $code = $request->input('code');
@@ -54,16 +57,23 @@ class FacebookAuthController extends Controller
             return redirect('/')->withErrors(['Error: ', 'User data cannot be read.']);
         }
         try {
-//            $response = $fb->get('/me?fields='.config('facebook.graph_user_parameters'));
-//            $userNode = $response->getGraphUser();
+            $response = $fb->get('/me?fields='.config('facebook.graph_user_parameters'));
+            $userNode = $response->getGraphUser();
         } catch(\Exception $e) {
             // When Graph returns an error
             return redirect('/')->withErrors(['Graph returned an error: ', $e->getMessage()]);
         }
 
         $oAuth2Client = $fb->getOAuth2Client();
-        $token = $oAuth2Client->getLastRequest()->getAccessToken();
+        $token = $fb->getDefaultAccessToken();
 
 //        dd($token);
+
+        $user = Auth::user();
+        $fbAccount = new FacebookAccount();
+        $fbAccount->access_token = serialize($token);
+        $fbAccount->link = $userNode->getLink();
+        $fbAccount->account_id = $userNode->getId();
+        $user->facebookAccounts()->save($fbAccount);
     }
 }
